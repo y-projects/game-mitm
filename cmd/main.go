@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	gamemitm "github.com/husanpao/game-mitm"
-	"github.com/husanpao/game-mitm/gosysproxy"
+	gamemitm "github.com/y-projects/game-mitm"
+	"github.com/y-projects/game-mitm/gosysproxy"
 
 	"os"
 	"os/signal"

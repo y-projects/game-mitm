@@ -214,7 +214,7 @@ func writeIOSArtifacts(ca *CA, caDir string) error {
 			<key>PayloadDisplayName</key>
 			<string>game-mitm Root CA</string>
 			<key>PayloadIdentifier</key>
-			<string>com.husanpao.game-mitm.ca</string>
+			<string>com.y-projects.game-mitm.ca</string>
 			<key>PayloadType</key>
 			<string>com.apple.security.root</string>
 			<key>PayloadUUID</key>
@@ -228,7 +228,7 @@ func writeIOSArtifacts(ca *CA, caDir string) error {
 	<key>PayloadDisplayName</key>
 	<string>game-mitm Root CA</string>
 	<key>PayloadIdentifier</key>
-	<string>com.husanpao.game-mitm.profile</string>
+	<string>com.y-projects.game-mitm.profile</string>
 	<key>PayloadOrganization</key>
 	<string>game-mitm</string>
 	<key>PayloadType</key>
