@@ -77,22 +77,30 @@ func (cm *CertificateManager) generateCertificateForDomain(domain string) (*tls.
 		return nil, err
 	}
 
-	// 确保证书包含WebSocket所需的扩展名和用途
+	serialLimit := new(big.Int).Lsh(big.NewInt(1), 128)
+	serialNumber, err := rand.Int(rand.Reader, serialLimit)
+	if err != nil {
+		return nil, err
+	}
+
+	now := time.Now()
 	template := &x509.Certificate{
-		SerialNumber: big.NewInt(time.Now().UnixNano()),
+		SerialNumber: serialNumber,
 		Subject: pkix.Name{
 			CommonName: host,
 		},
-		NotBefore:   time.Now(),
-		NotAfter:    time.Now().Add(24 * 365 * time.Hour),
-		KeyUsage:    x509.KeyUsageDigitalSignature | x509.KeyUsageKeyEncipherment,
-		ExtKeyUsage: []x509.ExtKeyUsage{x509.ExtKeyUsageServerAuth, x509.ExtKeyUsageClientAuth},
-		DNSNames: []string{
-			host,
-			"*." + host,
-			"ws." + host,
-			"wss." + host,
-		},
+		NotBefore:             now.Add(-5 * time.Minute),
+		NotAfter:              now.AddDate(1, 0, 0),
+		KeyUsage:              x509.KeyUsageDigitalSignature | x509.KeyUsageKeyEncipherment,
+		ExtKeyUsage:           []x509.ExtKeyUsage{x509.ExtKeyUsageServerAuth},
+		BasicConstraintsValid: true,
+		IsCA:                  false,
+	}
+
+	if ip := net.ParseIP(host); ip != nil {
+		template.IPAddresses = []net.IP{ip}
+	} else {
+		template.DNSNames = []string{host}
 	}
 
 	// Create certificate using CA

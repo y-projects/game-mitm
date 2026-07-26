@@ -1,0 +1,5 @@
+.idea/
+ca/*.crt
+ca/*.key
+ca/*.cer
+ca/*.mobileconfig
