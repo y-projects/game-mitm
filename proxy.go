@@ -3,7 +3,7 @@ package gamemitm
 import (
 	"context"
 	"fmt"
-	"github.com/y-projects/game-mitm/cert"
+	"github.com/husanpao/game-mitm/cert"
 	"net/http"
 	"os"
 	"time"

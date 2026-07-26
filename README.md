@@ -22,7 +22,7 @@
 
 1. 克隆项目：
    ```sh
-   go get github.com/y-projects/game-mitm@1.0.3
+   go get github.com/husanpao/game-mitm@1.0.3
    ```
 
 2. 示例代码：
@@ -32,7 +32,7 @@
     
     import (
     "fmt"
-    "github.com/y-projects/game-mitm"
+    "github.com/husanpao/game-mitm"
     "os"
     "os/signal"
     "syscall"

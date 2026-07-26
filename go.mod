@@ -1,4 +1,4 @@
-module github.com/y-projects/game-mitm
+module github.com/husanpao/game-mitm
 
 go 1.20
 
